@@ -4,6 +4,24 @@ from Bio.Blast import NCBIWWW, NCBIXML
 from io import StringIO
 
 def blast_aa(*seqs, program="blastp", database="nr", hitlist_size=10, save_xml=True):
+
+    """
+    Esta função realiza um BLAST de sequências de aminoácidos no NCBI
+    e guarda os resultados num ficheiro XML, além de retornar os registros
+    processados pelo Biopython.
+
+    seqs : aceita uma ou mais sequências de aminoácidos, que podem ser strings
+           ou objetos SeqRecord do Biopython.
+    program : string opcional, programa BLAST a utilizar (padrão: "blastn").
+    database : string opcional, base de dados do NCBI a pesquisar (padrão: "nt").
+    hitlist_size : inteiro opcional, número máximo de hits a recuperar por sequência (padrão: 10).
+    save_xml : booleano opcional, se True guarda o resultado BLAST em ficheiro XML (padrão: True).
+
+    A função imprime no ecrã os 10 melhores alinhamentos da última sequência
+    processada, incluindo Accession, Definition e E-value, e devolve um dicionário
+    com os SeqIDs como chave e objetos BlastRecord como valor.
+    """
+    
     resultados = {}
     for i, s in enumerate(seqs, start=1):
         if isinstance(s, SeqRecord):
@@ -40,6 +58,24 @@ def blast_aa(*seqs, program="blastp", database="nr", hitlist_size=10, save_xml=T
    
 
 def blast_nucl(*seqs, program="blastn", database="nt", hitlist_size=10, save_xml=True):
+   
+    """
+    Esta função realiza um BLAST de sequências de nucleótidos no NCBI
+    e guarda os resultados num ficheiro XML, além de retornar os registros
+    processados pelo Biopython.
+
+    seqs : aceita uma ou mais sequências de nucleótidos, que podem ser strings
+           ou objetos SeqRecord do Biopython.
+    program : string opcional, programa BLAST a utilizar (padrão: "blastn").
+    database : string opcional, base de dados do NCBI a pesquisar (padrão: "nt").
+    hitlist_size : inteiro opcional, número máximo de hits a recuperar por sequência (padrão: 10).
+    save_xml : booleano opcional, se True guarda o resultado BLAST em ficheiro XML (padrão: True).
+
+    A função imprime no ecrã os 10 melhores alinhamentos da última sequência
+    processada, incluindo Accession, Definition e E-value, e devolve um dicionário
+    com os SeqIDs como chave e objetos BlastRecord como valor.
+    """
+    
     resultados = {}
     for i, s in enumerate(seqs, start=1):
         if isinstance(s, SeqRecord):
@@ -73,4 +109,5 @@ def blast_nucl(*seqs, program="blastn", database="nt", hitlist_size=10, save_xml
             print ("E-value: ", hsp.expect)
 
     return resultados
+
 
