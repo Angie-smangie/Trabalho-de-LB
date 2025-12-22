@@ -50,7 +50,7 @@ def buscar_gene(cod_NCBI,gene):
     print(f"{gene} não encontrado.")
     return None
 
-def buscar_CDS(cod_NCBI,gene):
+def buscar_traducao(cod_NCBI,gene):
     """
     Esta função permite ir buscar a CDS associada a um gene de um genoma .gb, e devolve informações sobre o mesmo.
 
@@ -68,7 +68,7 @@ def buscar_CDS(cod_NCBI,gene):
                 locus = feature.qualifiers.get("locus_tag", [""])[0]
                 protein_seq = feature.qualifiers.get("translation", [""])[0]
                 record = SeqRecord(seq=Seq(protein_seq),id=gene,description=locus)
-                with open(f"{cod[0]}_CDS.fasta","w") as output:
+                with open(f"{cod[0]}_translated.fasta","w") as output:
                     SeqIO.write(record, output, "fasta")
                 print(f"CDS de {gene} encontrado")
                 print("Posição no ficheiro:", i)
