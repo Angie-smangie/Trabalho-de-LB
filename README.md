@@ -5,3 +5,5 @@ O mesmo visa a análise de genes de *Klebsiella phage KP32* cujas proteínas est
 Os ficheiros .py para utilização para todos os genes encontram-se na pasta Klebsiella-phage-KP32 (ex: Aquisição de sequências, BLAST, MSA, Phylo).
 
 A análise dos resultados aqui presentes está disponível em: https://padlet.com/asgdes/grupo-1-trabalho-de-laborat-rios-de-bioinform-tica-9p335t6w2qe4pp6j
+
+A compnente de variant calling deste trabalho irá ser realizado a partir do DOCKER.
