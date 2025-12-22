@@ -1,7 +1,14 @@
-#O código não é reprodutível na sua forma atual, pois foi inicialmente desenvolvido e testado no Google Colab, onde é possível executar comandos de sistema diretamente no ambiente de trabalho. Nesse contexto, foi possível ligar o alinhamento múltiplo de sequências (MSA) à construção da árvore filogenética num único fluxo de execução.
-#Ao tentar executar o mesmo código localmente, surgiram dificuldades na instalação e integração de ferramentas externas, nomeadamente o MAFFT, o que impediu a execução completa do pipeline dentro de um único script. Como resultado, o alinhamento teve de ser realizado externamente, sendo executada localmente apenas uma versão simplificada do código, suficiente para gerar a árvore filogenética a partir de um alinhamento já existente.
-#A resolução destes problemas encontra-se ainda em desenvolvimento, com o objetivo de tornar o pipeline totalmente reprodutível num ambiente local.
-
+"""
+O código não é reprodutível na sua forma atual, pois foi inicialmente desenvolvido e testado no Google Colab, onde é possível executar 
+comandos de sistema diretamente no ambiente de trabalho. Nesse contexto, foi possível ligar o alinhamento múltiplo de sequências (MSA) 
+à construção da árvore filogenética num único fluxo de execução.
+Ao tentar executar o mesmo código localmente, surgiram dificuldades na instalação e integração de ferramentas externas, nomeadamente o
+MAFFT, o que impediu a execução completa do pipeline dentro de um único script. Como resultado, o alinhamento teve de ser realizado 
+externamente, sendo executada localmente apenas uma versão simplificada do código, suficiente para gerar a árvore filogenética a partir
+de um alinhamento já existente.
+A resolução destes problemas encontra-se ainda em desenvolvimento, com o objetivo de tornar o pipeline totalmente reprodutível num 
+ambiente local.
+"""
 
 from pathlib import Path
 import shutil
@@ -133,3 +140,4 @@ print("UPGMA:")
 Phylo.draw_ascii(tree_upgma)
 print("\nNJ:")
 Phylo.draw_ascii(tree_nj)
+
