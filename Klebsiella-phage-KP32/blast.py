@@ -1,113 +1,116 @@
-#é necessário que biopython esteja instalado no pc
+from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
+from Bio import SeqIO
 from Bio.Blast import NCBIWWW, NCBIXML
 from io import StringIO
+import os
+import re
 
-def blast_aa(*seqs, program="blastp", database="nr", hitlist_size=10, save_xml=True):
-
+def run_blast(input_data, program, database, hitlist_size=500, e_value=10.0, low_complexity_filter=False, save_xml=True):
     """
-    Esta função realiza um BLAST de sequências de aminoácidos no NCBI
-    e guarda os resultados num ficheiro XML, além de retornar os registros
-    processados pelo Biopython.
+    Executa BLAST via NCBIWWW.qblast com parâmetros ajustados para resultados próximos ao site NCBI.
 
-    seqs : aceita uma ou mais sequências de aminoácidos, que podem ser strings
-           ou objetos SeqRecord do Biopython.
-    program : string opcional, programa BLAST a utilizar (padrão: "blastn").
-    database : string opcional, base de dados do NCBI a pesquisar (padrão: "nt").
-    hitlist_size : inteiro opcional, número máximo de hits a recuperar por sequência (padrão: 10).
-    save_xml : booleano opcional, se True guarda o resultado BLAST em ficheiro XML (padrão: True).
+    Parâmetros:
+    - input_data: str ou SeqRecord ou arquivo FASTA
+    - program: 'blastn', 'blastp', etc.
+    - database: 'nt', 'nr', etc.
+    - hitlist_size: número máximo de hits a retornar (default 500)
+    - e_value: cutoff do E-value (default 10.0)
+    - low_complexity_filter: aplicar filtro de regiões de baixa complexidade (default False)
+    - save_xml: salvar XML localmente
 
-    A função imprime no ecrã os 10 melhores alinhamentos da última sequência
-    processada, incluindo Accession, Definition e E-value, e devolve um dicionário
-    com os SeqIDs como chave e objetos BlastRecord como valor.
+    Retorna:
+    - dict: Dicionário onde cada chave é "seq_X" (ex: "seq_1", "seq_2") e cada valor é
+      um objeto Blast record do Biopython (NCBIXML.Blast) correspondente à sequência processada.
+      Esses objetos podem ser usados para extrair alinhamentos, HSPs e outras informações do BLAST.
     """
     
+    # Confirma se o input é correto
+    if isinstance(input_data, str) and os.path.isfile(input_data):
+        seq_records = list(SeqIO.parse(input_data, "fasta"))
+    elif isinstance(input_data, str):
+        seq_records = [SeqRecord(Seq(input_data), id="input_sequence")]
+    elif isinstance(input_data, SeqRecord):
+        seq_records = [input_data]
+    else:
+        raise TypeError("input_data inválido")
+
     resultados = {}
-    for i, s in enumerate(seqs, start=1):
-        if isinstance(s, SeqRecord):
-            seq_str = str(s.seq)
-            seq_id = s.id
-        elif isinstance(s, str):
-            seq_str = s
-            seq_id = f"seq_{i}"
-        else:
-            raise TypeError("A sequência tem de ser string ou SeqRecord")
 
-        print(f"BLAST para {seq_id}...")
-        handle = NCBIWWW.qblast(program, database, seq_str, hitlist_size=hitlist_size)
+    for i, seq in enumerate(seq_records, start=1):
+        seq_str = str(seq.seq)
 
+        # Pegar só a parte antes do ':' e tornar o nome do ficheiro "guardavel"
+        safe_id = seq.id.split(":")[0]
+        safe_id = re.sub(r'[^A-Za-z0-9_\-]', '_', safe_id)
+        xml_name = f"blast_result_{safe_id}.xml"
+
+
+        print(f"A correr {program} -> {xml_name}")
+        # faz o blast
+        handle = NCBIWWW.qblast(
+            program=program,
+            database=database,
+            sequence=seq_str,
+            hitlist_size=hitlist_size,
+            expect=e_value,
+            filter='L' if low_complexity_filter else 'F',  # 'F' desativa filtro
+            format_type='XML'
+        )
+          
         xml_text = handle.read()
+        handle.close()
 
+         # salva o XML localmente, se na funçao tiver save_xml=True
         if save_xml:
-            xml_file = f"{seq_id}.xml"
-            with open(xml_file, "w", encoding="utf-8") as out:
-                out.write(xml_text)
-            print(f"XML criado: {xml_file}")
-
+            with open(xml_name, "w", encoding="utf-8") as f:
+                f.write(xml_text)
+            
+        #cria um objeto Blast record do biopython que é armazenado no dicionário de resultados
         blast_record = NCBIXML.read(StringIO(xml_text))
-        resultados[seq_id] = blast_record
-    
-    for i in range(10):
-        alignment = blast_record.alignments[i]
-        print ("Accession: " + alignment.accession)
-        print ("Definition: " + alignment.hit_def)
-        for hsp in alignment.hsps:
-            print ("E-value: ", hsp.expect)
-        
-    return resultados
-   
-
-def blast_nucl(*seqs, program="blastn", database="nt", hitlist_size=10, save_xml=True):
-   
-    """
-    Esta função realiza um BLAST de sequências de nucleótidos no NCBI
-    e guarda os resultados num ficheiro XML, além de retornar os registros
-    processados pelo Biopython.
-
-    seqs : aceita uma ou mais sequências de nucleótidos, que podem ser strings
-           ou objetos SeqRecord do Biopython.
-    program : string opcional, programa BLAST a utilizar (padrão: "blastn").
-    database : string opcional, base de dados do NCBI a pesquisar (padrão: "nt").
-    hitlist_size : inteiro opcional, número máximo de hits a recuperar por sequência (padrão: 10).
-    save_xml : booleano opcional, se True guarda o resultado BLAST em ficheiro XML (padrão: True).
-
-    A função imprime no ecrã os 10 melhores alinhamentos da última sequência
-    processada, incluindo Accession, Definition e E-value, e devolve um dicionário
-    com os SeqIDs como chave e objetos BlastRecord como valor.
-    """
-    
-    resultados = {}
-    for i, s in enumerate(seqs, start=1):
-        if isinstance(s, SeqRecord):
-            seq_str = str(s.seq)
-            seq_id = s.id
-        elif isinstance(s, str):
-            seq_str = s
-            seq_id = f"seq_{i}"
-        else:
-            raise TypeError("A sequência tem de ser string ou SeqRecord")
-
-        print(f"BLAST para {seq_id}...")
-        handle = NCBIWWW.qblast(program, database, seq_str, hitlist_size=hitlist_size)
-
-        xml_text = handle.read()
-
-        if save_xml:
-            xml_file = f"{seq_id}.xml"
-            with open(xml_file, "w", encoding="utf-8") as out:
-                out.write(xml_text)
-            print(f"XML criado: {xml_file}")
-
-        blast_record = NCBIXML.read(StringIO(xml_text))
-        resultados[seq_id] = blast_record
-
-    for i in range(10):
-        alignment = blast_record.alignments[i]
-        print ("Accession: " + alignment.accession)
-        print ("Definition: " + alignment.hit_def)
-        for hsp in alignment.hsps:
-            print ("E-value: ", hsp.expect)
+        resultados[f"seq_{i}"] = blast_record
 
     return resultados
 
+
+def get_top_hits(blast_record, top_n=10):
+    """
+    Retorna os detalhes dos top N hits de um blast_record como uma lista de dicionários.
+
+    Parâmetros:
+    - blast_record: objeto BLAST do Biopython (NCBIXML.read)
+    - top_n: número de hits a retornar (default 10)
+
+    Retorna:
+    - List[Dict]: cada elemento é um hit com os dados de seus HSPs
+    """
+    top_hits = []
+    alignments = blast_record.alignments[:top_n]
+    # ve os hits e aponta as chaves desse hit
+    for i, aln in enumerate(alignments, start=1):
+        hit_data = {
+            "hit_number": i,
+            "accession": aln.accession,
+            "definition": aln.hit_def,
+            "hsps": []
+        }
+        # ve o hsp e atualiza as chaves desse hsp
+        for hsp in aln.hsps:
+            hsp_data = {
+                "e_value": hsp.expect,
+                "score": hsp.score,
+                "bit_score": hsp.bits,
+                "query_start": hsp.query_start,
+                "query_end": hsp.query_end,
+                "subject_start": hsp.sbjct_start,
+                "subject_end": hsp.sbjct_end,
+                "align_length": hsp.align_length,
+                "identities": hsp.identities,
+                "gaps": hsp.gaps
+            }
+            hit_data["hsps"].append(hsp_data)
+
+        top_hits.append(hit_data)
+
+    return top_hits
 
