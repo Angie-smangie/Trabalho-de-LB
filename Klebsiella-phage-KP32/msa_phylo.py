@@ -12,13 +12,13 @@ def msa_from_blastn_xml(
     email: str = "teu_email@exemplo.com",
 ):
     """
-    Os resultados BLASTn em formato XML foram processados de forma automática, sendo 
-    selecionados os n melhores alinhamentos. Para cada hit, foi considerado apenas o 
-    HSP com maior score, correspondente à região de maior similaridade entre a sequência
-    query e a sequência da base de dados. Com base nas coordenadas desse alinhamento, foi
-    extraída exclusivamente a região homóloga de cada sequência alvo, recorrendo à base 
-    de dados nuccore do NCBI. As regiões obtidas foram reunidas num ficheiro FASTA multi-sequência,
-    que serviu de base para o alinhamento múltiplo e para a análise filogenética subsequente
+    Os resultados BLASTn em formato XML foram processados, sendo selecionados os n 
+    melhores alinhamentos. Para cada hit, foi considerado apenas o HSP com maior score, 
+    correspondente à região de maior similaridade entre a sequência query e a sequência 
+    da base de dados. Com base nas coordenadas desse alinhamento, foi extraída exclusivamente 
+    a região homóloga de cada sequência alvo, recorrendo à base de dados nuccore do NCBI. As 
+    regiões obtidas foram reunidas num ficheiro FASTA multi-sequência, que serviu de base para 
+    o alinhamento múltiplo e para a análise filogenética subsequente
     """
 
     Entrez.email = email
@@ -137,3 +137,4 @@ if __name__ == "__main__":
     fasta_hits = msa_from_blastn_xml(xml_file, email=email, n_hits=10)
     aligned = run_mafft(fasta_hits, mafft_path)
     tree = phylo_tree_nucl(aligned)
+
