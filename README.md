@@ -6,4 +6,4 @@ Os ficheiros .py para utilização para todos os genes encontram-se na pasta Kle
 
 A análise dos resultados aqui presentes está disponível em: https://padlet.com/asgdes/grupo-1-trabalho-de-laborat-rios-de-bioinform-tica-9p335t6w2qe4pp6j
 
-A compnente de variant calling deste trabalho irá ser realizado a partir do DOCKER.
+A componente de *variant calling* deste trabalho irá ser realizado a partir do DOCKER.
