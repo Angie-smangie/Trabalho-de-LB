@@ -25,7 +25,7 @@ def run_blast(input_data, program, database, hitlist_size=500, e_value=10.0, low
       Esses objetos podem ser usados para extrair alinhamentos, HSPs e outras informações do BLAST.
     """
     
-    # Confirma se o input é correto
+    # confirma se o input é correto
     if isinstance(input_data, str) and os.path.isfile(input_data):
         seq_records = list(SeqIO.parse(input_data, "fasta"))
     elif isinstance(input_data, str):
@@ -40,28 +40,43 @@ def run_blast(input_data, program, database, hitlist_size=500, e_value=10.0, low
     for i, seq in enumerate(seq_records, start=1):
         seq_str = str(seq.seq)
 
-        # Pegar só a parte antes do ':' e tornar o nome do ficheiro "guardavel"
-        safe_id = seq.id.split(":")[0]
-        safe_id = re.sub(r'[^A-Za-z0-9_\-]', '_', safe_id)
-        xml_name = f"blast_result_{safe_id}.xml"
+        #nome do ficheiro para guardar
+        match = re.search(r'\[GeneID=(\d+)\]', seq.description)
+        if match:
+                safe_id = match.group(1)
+        else:
+            safe_id = re.sub(r'[^A-Za-z0-9_\-]', '_', seq.id)
+        xml_name = f"blast_result_{safe_id}_{program}.xml"
+
 
 
         print(f"A correr {program} -> {xml_name}")
         # faz o blast
-        handle = NCBIWWW.qblast(
-            program=program,
-            database=database,
-            sequence=seq_str,
-            hitlist_size=hitlist_size,
-            expect=e_value,
-            filter='L' if low_complexity_filter else 'F',  # 'F' desativa filtro
-            format_type='XML'
-        )
-          
+        if program == "blastn":
+            handle = NCBIWWW.qblast(
+                program=program,
+                database=database,
+                sequence=seq_str,
+                hitlist_size=hitlist_size,
+                expect=e_value,
+                entrez_query='NOT Klebsiella[All Fields] AND NOT phage[All Fields]',
+                filter='L' if low_complexity_filter else 'F',  # 'F' desativa filtro
+                format_type='XML'
+            )
+        else:
+            handle = NCBIWWW.qblast(
+                program=program,
+                database=database,
+                sequence=seq_str,
+                hitlist_size=hitlist_size,
+                expect=e_value,
+                filter='L' if low_complexity_filter else 'F',  # 'F' desativa filtro
+                format_type='XML'
+            )
         xml_text = handle.read()
         handle.close()
 
-         # salva o XML localmente, se na funçao tiver save_xml=True
+         # salva o XML localmente(se na funçao tiver save_xml=True)
         if save_xml:
             with open(xml_name, "w", encoding="utf-8") as f:
                 f.write(xml_text)
@@ -113,4 +128,3 @@ def get_top_hits(blast_record, top_n=10):
         top_hits.append(hit_data)
 
     return top_hits
-
