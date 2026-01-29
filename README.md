@@ -1,4 +1,4 @@
-## **Laboratórios de Bioinformática – Grupo 1**
+# **Laboratórios de Bioinformática – Grupo 1**
 
 Este repositório contém o código, dados e resultados desenvolvidos no âmbito do trabalho do **Grupo 1** da unidade curricular **Laboratórios de Bioinformática**, constituído por **Ângela Sousa**, **António Araújo**, **Filipe Kuhlmann** e **Luís Pedrosa**.
 
@@ -6,7 +6,7 @@ O mesmo tem como objetivo a análise de quatro genes de *Klebsiella phage* KP32,
 
 *K. pneumoniae* tipicamente existe inofensivamente no sistema digestivo humano, mais concretamente no trato gastrointestinal. É, no entanto, um patógeno oportunista capaz de causar infeções graves como infeções do trato urinário, pneumonia, abcessos hepáticos e septimicia, especialmente em ambientes hospitalares. A emergência de estirpes multirresistentes torna o estudo de bacteriófagos particularmente relevante como potencial alternativa terapêutica.
 
-# **Estrutura do Repositório**
+## **Estrutura do Repositório**
 
 🔹 Pasta **Klebsiella-phage-KP32**
 
@@ -32,6 +32,6 @@ Contém os *scripts* principais desenvolvidos em Python, bem como dados de refer
 * kp32gpXX_muscle.fas
 * cdd_XX.png & cdd_XX_X.png - resultados do Conserved Domain Search do NCBI.
 
-# **Análise dos Resultados**
+## **Análise dos Resultados**
 
 A análise e interpretação detalhada dos resultados obtidos neste trabalho encontra-se disponível no seguinte link: https://padlet.com/asgdes/grupo-1-trabalho-de-laborat-rios-de-bioinform-tica-9p335t6w2qe4pp6j
