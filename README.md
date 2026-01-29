@@ -8,7 +8,7 @@ O mesmo tem como objetivo a análise de quatro genes de *Klebsiella phage* KP32,
 
 ## **Estrutura do Repositório**
 
-🔹 Pasta **Klebsiella-phage-KP32**
+### Pasta **Klebsiella-phage-KP32**
 
 Contém os *scripts* principais desenvolvidos em Python, bem como dados de referência:
 
@@ -21,7 +21,7 @@ Contém os *scripts* principais desenvolvidos em Python, bem como dados de refer
 * NC_013647.1.gb – ficheiro GenBank correspondente ao genoma do *K. phage* KP32
 * **Resultados da ferramenta PhagePromoter**, utilizados para identificação de promotores no genoma do bacteriófago
 
-🔹 Pastas dos Genes (**Gene_KP32gp15**, **Gene_KP32gp31**, **Gene_KP32gp37**, **Gene_KP32gp38**)
+### Pastas dos Genes (**Gene_KP32gp15**, **Gene_KP32gp31**, **Gene_KP32gp37**, **Gene_KP32gp38**)
 
 * XXX.fasta – sequência nucleotídica do gene
 * XXX_translated.fasta – sequência de aminoácidos
