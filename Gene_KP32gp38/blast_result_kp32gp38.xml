@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd">
+<BlastOutput>
+  <BlastOutput_program>blastn</BlastOutput_program>
+  <BlastOutput_version>BLASTN 2.17.0+</BlastOutput_version>
+  <BlastOutput_reference>Stephen F. Altschul, Thomas L. Madden, Alejandro A. Sch&amp;auml;ffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), &quot;Gapped BLAST and PSI-BLAST: a new generation of protein database search programs&quot;, Nucleic Acids Res. 25:3389-3402.</BlastOutput_reference>
+  <BlastOutput_db>core_nt</BlastOutput_db>
+  <BlastOutput_query-ID>Query_5922751</BlastOutput_query-ID>
+  <BlastOutput_query-def>No definition line</BlastOutput_query-def>
+  <BlastOutput_query-len>1731</BlastOutput_query-len>
+  <BlastOutput_param>
+    <Parameters>
+      <Parameters_expect>10</Parameters_expect>
+      <Parameters_sc-match>2</Parameters_sc-match>
+      <Parameters_sc-mismatch>-3</Parameters_sc-mismatch>
+      <Parameters_gap-open>5</Parameters_gap-open>
+      <Parameters_gap-extend>2</Parameters_gap-extend>
+      <Parameters_filter>F</Parameters_filter>
+    </Parameters>
+  </BlastOutput_param>
+<BlastOutput_iterations>
+<Iteration>
+  <Iteration_iter-num>1</Iteration_iter-num>
+  <Iteration_query-ID>Query_5922751</Iteration_query-ID>
+  <Iteration_query-def>No definition line</Iteration_query-def>
+  <Iteration_query-len>1731</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>gi|2057050863|tpg|BK049468.1|</Hit_id>
+  <Hit_def>MAG TPA_asm: Caudoviricetes sp. isolate ctGFg1, partial genome</Hit_def>
+  <Hit_accession>BK049468</Hit_accession>
+  <Hit_len>40527</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>120.309</Hsp_bit-score>
+      <Hsp_score>132</Hsp_score>
+      <Hsp_evalue>2.43359e-22</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>81</Hsp_query-to>
+      <Hsp_hit-from>21170</Hsp_hit-from>
+      <Hsp_hit-to>21090</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>75</Hsp_identity>
+      <Hsp_positive>75</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>81</Hsp_align-len>
+      <Hsp_qseq>ATGTTAGACAATTTCAATCAGCCGAAAGGCTCAACCATTGGTGTGCTCAAGGATGGGCGCACTATCCAAGAGGCATTCGAC</Hsp_qseq>
+      <Hsp_hseq>ATGTTAAACAATCTGAATCAGCCGAAAGGCTCAACCATTGGTGTGCTCAAGGATGGGCGCACTACCCAAGAGGCTATCGAC</Hsp_hseq>
+      <Hsp_midline>|||||| ||||| | ||||||||||||||||||||||||||||||||||||||||||||||||| |||||||||  |||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>2</Hit_num>
+  <Hit_id>gi|2791123061|gb|PQ197425.1|</Hit_id>
+  <Hit_def>Raoultella phage vB_Rp_P25a, complete genome</Hit_def>
+  <Hit_accession>PQ197425</Hit_accession>
+  <Hit_len>40739</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>116.702</Hsp_bit-score>
+      <Hsp_score>128</Hsp_score>
+      <Hsp_evalue>2.96472e-21</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>74</Hsp_query-to>
+      <Hsp_hit-from>35633</Hsp_hit-from>
+      <Hsp_hit-to>35706</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>70</Hsp_identity>
+      <Hsp_positive>70</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>74</Hsp_align-len>
+      <Hsp_qseq>ATGTTAGACAATTTCAATCAGCCGAAAGGCTCAACCATTGGTGTGCTCAAGGATGGGCGCACTATCCAAGAGGC</Hsp_qseq>
+      <Hsp_hseq>ATGTTAGACAGACTGAATCAGCCGAAAGGCTCAACCATTGGTGTGCTCAAGGATGGGCGCACTATCCAAGAGGC</Hsp_hseq>
+      <Hsp_midline>||||||||||   | |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>3</Hit_num>
+  <Hit_id>gi|2057094501|tpg|BK038190.1|</Hit_id>
+  <Hit_def>MAG TPA_asm: Caudoviricetes sp. isolate ctwV11, partial genome</Hit_def>
+  <Hit_accession>BK038190</Hit_accession>
+  <Hit_len>40678</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>110.39</Hsp_bit-score>
+      <Hsp_score>121</Hsp_score>
+      <Hsp_evalue>4.40004e-19</Hsp_evalue>
+      <Hsp_query-from>13</Hsp_query-from>
+      <Hsp_query-to>80</Hsp_query-to>
+      <Hsp_hit-from>21691</Hsp_hit-from>
+      <Hsp_hit-to>21758</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>65</Hsp_identity>
+      <Hsp_positive>65</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>68</Hsp_align-len>
+      <Hsp_qseq>TTCAATCAGCCGAAAGGCTCAACCATTGGTGTGCTCAAGGATGGGCGCACTATCCAAGAGGCATTCGA</Hsp_qseq>
+      <Hsp_hseq>TTCAACCAGCCGAAAGGCTCAACCATTGGTGTGCTCAAGGATGGGCGCACTATCCAGCAGGCATTCGA</Hsp_hseq>
+      <Hsp_midline>||||| ||||||||||||||||||||||||||||||||||||||||||||||||||  ||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>4</Hit_num>
+  <Hit_id>gi|2565316400|gb|OR067836.1|</Hit_id>
+  <Hit_def>Serratia phage KKP 3708, complete genome</Hit_def>
+  <Hit_accession>OR067836</Hit_accession>
+  <Hit_len>40461</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>109.488</Hsp_bit-score>
+      <Hsp_score>120</Hsp_score>
+      <Hsp_evalue>4.40004e-19</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>80</Hsp_query-to>
+      <Hsp_hit-from>35944</Hsp_hit-from>
+      <Hsp_hit-to>36023</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>72</Hsp_identity>
+      <Hsp_positive>72</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>80</Hsp_align-len>
+      <Hsp_qseq>ATGTTAGACAATTTCAATCAGCCGAAAGGCTCAACCATTGGTGTGCTCAAGGATGGGCGCACTATCCAAGAGGCATTCGA</Hsp_qseq>
+      <Hsp_hseq>ATGTTAGACAATTTCAATCAGCCGAAAGGCTCAACCATTGGTGTGCTAAAGGATGGGCGCACCGTTCAGGAGACGTTTGA</Hsp_hseq>
+      <Hsp_midline>||||||||||||||||||||||||||||||||||||||||||||||| ||||||||||||||  | || ||| | || ||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>5</Hit_num>
+  <Hit_id>gi|2293566317|gb|OP072590.1|</Hit_id>
+  <Hit_def>MAG: Bacteriophage sp. isolate 3323_112907, complete genome</Hit_def>
+  <Hit_accession>OP072590</Hit_accession>
+  <Hit_len>41282</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>107.685</Hsp_bit-score>
+      <Hsp_score>118</Hsp_score>
+      <Hsp_evalue>1.53577e-18</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>74</Hsp_query-to>
+      <Hsp_hit-from>5094</Hsp_hit-from>
+      <Hsp_hit-to>5021</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>68</Hsp_identity>
+      <Hsp_positive>68</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>74</Hsp_align-len>
+      <Hsp_qseq>ATGTTAGACAATTTCAATCAGCCGAAAGGCTCAACCATTGGTGTGCTCAAGGATGGGCGCACTATCCAAGAGGC</Hsp_qseq>
+      <Hsp_hseq>ATGTTAGACAGACTGAATCAGCCGAAAGGCTCAACCATTGGTGTGCTCAGGGATGGGCGCACTATCCAAGAAGC</Hsp_hseq>
+      <Hsp_midline>||||||||||   | |||||||||||||||||||||||||||||||||| ||||||||||||||||||||| ||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>6</Hit_num>
+  <Hit_id>gi|2791123010|gb|PQ197424.1|</Hit_id>
+  <Hit_def>Raoultella phage vB_Ro_S7a, complete genome</Hit_def>
+  <Hit_accession>PQ197424</Hit_accession>
+  <Hit_len>39661</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>103.177</Hsp_bit-score>
+      <Hsp_score>113</Hsp_score>
+      <Hsp_evalue>6.53024e-17</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>74</Hsp_query-to>
+      <Hsp_hit-from>34558</Hsp_hit-from>
+      <Hsp_hit-to>34631</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>67</Hsp_identity>
+      <Hsp_positive>67</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>74</Hsp_align-len>
+      <Hsp_qseq>ATGTTAGACAATTTCAATCAGCCGAAAGGCTCAACCATTGGTGTGCTCAAGGATGGGCGCACTATCCAAGAGGC</Hsp_qseq>
+      <Hsp_hseq>ATGTTACCAAAATTTAACCAGCCGAAAGGCTCAACCATTGGTGTGCTCAGGGATGGGCGCACTATCCAAGAGGC</Hsp_hseq>
+      <Hsp_midline>||||||   || || || ||||||||||||||||||||||||||||||| ||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>7</Hit_num>
+  <Hit_id>gi|2053011609|tpg|BK023704.1|</Hit_id>
+  <Hit_def>MAG TPA_asm: Caudoviricetes sp. isolate ctoRY5, partial genome</Hit_def>
+  <Hit_accession>BK023704</Hit_accession>
+  <Hit_len>40851</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>103.177</Hsp_bit-score>
+      <Hsp_score>113</Hsp_score>
+      <Hsp_evalue>6.53024e-17</Hsp_evalue>
+      <Hsp_query-from>13</Hsp_query-from>
+      <Hsp_query-to>81</Hsp_query-to>
+      <Hsp_hit-from>27680</Hsp_hit-from>
+      <Hsp_hit-to>27612</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>64</Hsp_identity>
+      <Hsp_positive>64</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>69</Hsp_align-len>
+      <Hsp_qseq>TTCAATCAGCCGAAAGGCTCAACCATTGGTGTGCTCAAGGATGGGCGCACTATCCAAGAGGCATTCGAC</Hsp_qseq>
+      <Hsp_hseq>TTTAACCAGCCGAAAGGCTCAACAATTGGTGTGCTCAAGGATGGGCGCACTATCCAACAGGCATTTGAC</Hsp_hseq>
+      <Hsp_midline>|| || ||||||||||||||||| ||||||||||||||||||||||||||||||||| ||||||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>8</Hit_num>
+  <Hit_id>gi|2177949748|gb|OL355123.1|</Hit_id>
+  <Hit_def>MAG: Enterobacter phage ENC14, complete genome</Hit_def>
+  <Hit_accession>OL355123</Hit_accession>
+  <Hit_len>39996</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>97.7665</Hsp_bit-score>
+      <Hsp_score>107</Hsp_score>
+      <Hsp_evalue>2.77673e-15</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>81</Hsp_query-to>
+      <Hsp_hit-from>4958</Hsp_hit-from>
+      <Hsp_hit-to>4878</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>70</Hsp_identity>
+      <Hsp_positive>70</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>81</Hsp_align-len>
+      <Hsp_qseq>ATGTTAGACAATTTCAATCAGCCGAAAGGCTCAACCATTGGTGTGCTCAAGGATGGGCGCACTATCCAAGAGGCATTCGAC</Hsp_qseq>
+      <Hsp_hseq>ATGTTAAACAAATTGAATCAACCTAAAGGCTCTACAATCGGTGTGCTCAAGGATGGGCGCACCGTCCAAGAGGCAATCGAC</Hsp_hseq>
+      <Hsp_midline>|||||| |||| || ||||| || |||||||| || || |||||||||||||||||||||||  ||||||||||| |||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>9</Hit_num>
+  <Hit_id>gi|2051088246|tpg|BK014789.1|</Hit_id>
+  <Hit_def>MAG TPA_asm: Caudovirales sp. cthNP28, partial genome</Hit_def>
+  <Hit_accession>BK014789</Hit_accession>
+  <Hit_len>40676</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>87.848</Hsp_bit-score>
+      <Hsp_score>96</Hsp_score>
+      <Hsp_evalue>1.43838e-12</Hsp_evalue>
+      <Hsp_query-from>13</Hsp_query-from>
+      <Hsp_query-to>80</Hsp_query-to>
+      <Hsp_hit-from>36137</Hsp_hit-from>
+      <Hsp_hit-to>36204</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>60</Hsp_identity>
+      <Hsp_positive>60</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>68</Hsp_align-len>
+      <Hsp_qseq>TTCAATCAGCCGAAAGGCTCAACCATTGGTGTGCTCAAGGATGGGCGCACTATCCAAGAGGCATTCGA</Hsp_qseq>
+      <Hsp_hseq>TTCACTCAGCCGAAAGGCTCAACAATTGGTGTGCTCAAGGATGGGCGCACCGTCCAACAAGCGTTTGA</Hsp_hseq>
+      <Hsp_midline>|||| |||||||||||||||||| ||||||||||||||||||||||||||  ||||| | || || ||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>10</Hit_num>
+  <Hit_id>gi|3044660924|gb|CP197255.1|</Hit_id>
+  <Hit_def>Sorangium sp. KYC3313 chromosome, complete genome</Hit_def>
+  <Hit_accession>CP197255</Hit_accession>
+  <Hit_len>12350246</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>47.2722</Hsp_bit-score>
+      <Hsp_score>51</Hsp_score>
+      <Hsp_evalue>4.40393</Hsp_evalue>
+      <Hsp_query-from>835</Hsp_query-from>
+      <Hsp_query-to>874</Hsp_query-to>
+      <Hsp_hit-from>963647</Hsp_hit-from>
+      <Hsp_hit-to>963609</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>35</Hsp_identity>
+      <Hsp_positive>35</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>40</Hsp_align-len>
+      <Hsp_qseq>CGTTACGTTGGCGTTCTTCGGGTTGGTGCAACTGCGGTGG</Hsp_qseq>
+      <Hsp_hseq>CGTTACGGGGGCGTTCTTCGGGTCGGTG-AACTTCGGTGG</Hsp_hseq>
+      <Hsp_midline>|||||||  |||||||||||||| |||| |||| ||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>166556</Statistics_db-num>
+      <Statistics_db-len>564267111</Statistics_db-len>
+      <Statistics_hsp-len>0</Statistics_hsp-len>
+      <Statistics_eff-space>0</Statistics_eff-space>
+      <Statistics_kappa>0.41</Statistics_kappa>
+      <Statistics_lambda>0.625</Statistics_lambda>
+      <Statistics_entropy>0.78</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+</BlastOutput_iterations>
+</BlastOutput>
