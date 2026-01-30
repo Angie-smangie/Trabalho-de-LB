@@ -6,84 +6,68 @@ import os
 import matplotlib.pyplot as plt
 import re
 
-def msa_from_blastn_xml(
+
+def msa_from_blastp_xml(
     xml_file: str,
     query_fasta: str,
-    output_fasta: str = "hits_nucl.fasta",
+    output_fasta: str = "hits_prot.fasta",
     n_hits: int = 10,
     email: str = "teu_email@email.com",
 ):
     """
-    Os resultados BLASTn em formato XML foram processados, sendo  selecionados os n melhores alinhamentos. 
-    Para cada hit, foi considerado apenas o HSP com maior score, correspondente à região de maior similaridade 
-    entre a sequência query e a sequência da base de dados. Com base nas coordenadas desse alinhamento, foi
-    extraída exclusivamente a região homóloga de cada sequência alvo, recorrendo à base de dados nuccore do NCBI.
-    As regiões obtidas foram reunidas num ficheiro FASTA multi-sequência, que serviu de base para o alinhamento 
-    múltiplo e para a análise filogenética subsequente.
+    Os resultados BLASTp em formato XML foram processados, sendo selecionados os n melhores alinhamentos.
+    Para cada hit identificado, foi obtida a sequência proteica completa associada ao respetivo accession,
+    recorrendo à base de dados protein do NCBI. A sequência proteica da query foi incluída juntamente com
+    as proteínas homólogas recuperadas, formando um ficheiro FASTA multi-sequência. Este ficheiro serviu
+    de base para o alinhamento múltiplo de sequências e para a inferência filogenética subsequente,
+    baseada em sequências de aminoácidos.
     """
-                                                                    
+
     Entrez.email = email
 
     records = []
     id_to_organism = {}
 
-    print("Sequências incluídas:")
-
-    query = SeqIO.read(query_fasta, "fasta")
+    print("Proteínas incluídas:")
 
     with open(xml_file) as f:
         blast_record = NCBIXML.read(f)
 
-    query_label = blast_record.query
+    match = re.search(r"blast_result_(\d+)_blastp", xml_file)
+    query_number = match.group(1) if match else "unknown"
 
-    if not query_label or query_label.lower().startswith("no definition"):
-        xml_base = os.path.splitext(os.path.basename(xml_file))[0]
-        gene_id = xml_base.replace("blast_result_", "")
-        query_label = f"Query_GeneID_{gene_id}"
+    query = SeqIO.read(query_fasta, "fasta")
 
     query_id = "query"
     query.id = query_id
     query.name = query_id
-    query.description = query_label
+    query.description = f"Query_{query_number}"
 
     records.append(query)
-    id_to_organism[query_id] = query_label
+    id_to_organism[query_id] = query.description
+    print(f" - {query.description}")
 
-    print(f" - {query_label}")
 
 
     if not blast_record.alignments:
-        raise ValueError("O XML não tem alinhamentos BLAST.")
+        raise ValueError("O XML não contém alinhamentos BLASTp.")
 
     for aln in blast_record.alignments[:n_hits]:
-        if not aln.hsps:
-            continue
 
         organism = aln.hit_def
-        organism = re.sub(r"^MAG\s+[^:]+:\s*", "", organism)
-        organism = re.sub(r",\s*(complete|partial)\s+genome", "", organism)
         organism = organism.split(">")[0].strip()
 
-        hsp = aln.hsps[0]
-        start = min(hsp.sbjct_start, hsp.sbjct_end)
-        end = max(hsp.sbjct_start, hsp.sbjct_end)
-        strand = 1 if hsp.sbjct_start <= hsp.sbjct_end else 2
-
         handle = Entrez.efetch(
-            db="nuccore",
+            db="protein",
             id=aln.accession,
             rettype="fasta",
-            retmode="text",
-            seq_start=start,
-            seq_stop=end,
-            strand=strand,
+            retmode="text"
         )
 
         rec = SeqIO.read(handle, "fasta")
         handle.close()
 
-        safe_id = f"org{len(records)}"
-
+        safe_id = f"prot{len(records)}"
         rec.id = safe_id
         rec.name = safe_id
         rec.description = organism
@@ -95,21 +79,27 @@ def msa_from_blastn_xml(
 
     SeqIO.write(records, output_fasta, "fasta")
     print(f"\nFASTA criado: {output_fasta}")
-    print(f"Total de sequências: {len(records)}")
+    print(f"Total de proteínas: {len(records)}")
 
     return output_fasta, id_to_organism
 
-def run_mafft(input_fasta: str, mafft_path: str, output_fasta: str = "hits_nucl_aligned.fasta"):
-    
+
+def run_mafft(
+    input_fasta: str,
+    mafft_path: str,
+    output_fasta: str = "hits_prot_aligned.fasta"
+):
     """
-    O alinhamento múltiplo de sequências foi realizado recorrendo ao software MAFFT. O ficheiro FASTA 
-    multi-sequência, contendo as regiões nucleotídicas homólogas previamente extraídas, foi utilizado 
-    como input, sendo aplicado o modo --auto, que permite ao MAFFT selecionar automaticamente a estratégia 
-    de alinhamento mais adequada. O alinhamento resultante foi guardado num novo ficheiro FASTA, que 
-    serviu de base para a análise filogenética subsequente.
+    O alinhamento múltiplo de sequências proteicas foi realizado utilizando o software MAFFT.
+    O ficheiro FASTA multi-sequência, contendo a proteína query e as proteínas homólogas
+    recuperadas por BLASTp, foi utilizado como input, sendo aplicado o modo --auto, que
+    permite ao MAFFT selecionar automaticamente a estratégia de alinhamento mais adequada.
+    O alinhamento resultante foi guardado num novo ficheiro FASTA, que serviu de base para
+    a análise filogenética subsequente.
     """
 
     print("\nA correr MAFFT...")
+
     with open(output_fasta, "w") as out:
         subprocess.run(
             [mafft_path, "--auto", input_fasta],
@@ -118,19 +108,22 @@ def run_mafft(input_fasta: str, mafft_path: str, output_fasta: str = "hits_nucl_
             check=True,
             shell=True
         )
+
     print(f"MSA concluído: {output_fasta}")
     return output_fasta
 
-def phylo_tree_nucl(aligned_fasta: str, id_to_organism: dict):
 
+def phylo_tree_prot(aligned_fasta: str, id_to_organism: dict):
     """
-    A função phylo_tree_nucl constrói uma árvore filogenética a partir de um alinhamento múltiplo de sequências
-    nucleotídicas. O alinhamento é utilizado para calcular uma matriz de distâncias baseada na identidade, que 
-    representa a proporção de diferenças entre as sequências. A partir desta matriz, a árvore filogenética é inferida 
-    recorrendo ao método UPGMA e posteriormente visualizada de forma gráfica, permitindo a interpretação das relações 
-    evolutivas entre as sequências analisadas.
+    A função phylo_tree_prot constrói uma árvore filogenética a partir de um alinhamento
+    múltiplo de sequências proteicas. O alinhamento é utilizado para calcular uma matriz
+    de distâncias baseada na identidade entre aminoácidos, refletindo a proporção de
+    diferenças observadas entre as sequências. Com base nesta matriz de distâncias,
+    a árvore filogenética é inferida recorrendo ao método UPGMA e posteriormente
+    visualizada de forma gráfica, permitindo a interpretação das relações evolutivas
+    entre as proteínas analisadas.
     """
-    
+
     alignment = AlignIO.read(aligned_fasta, "fasta")
 
     calculator = DistanceCalculator("identity")
@@ -142,8 +135,8 @@ def phylo_tree_nucl(aligned_fasta: str, id_to_organism: dict):
     for clade in tree.get_nonterminals():
         clade.name = None
 
-    fig, ax = plt.subplots(figsize=(16, 9))
-    plt.rcParams.update({"font.size": 15})
+    fig, ax = plt.subplots(figsize=(20, 10))  
+    plt.rcParams.update({"font.size": 14})
 
     Phylo.draw(
         tree,
@@ -155,22 +148,26 @@ def phylo_tree_nucl(aligned_fasta: str, id_to_organism: dict):
     )
 
     x_left, x_right = ax.get_xlim()
-    ax.set_xlim(x_left, x_right * 1.35)
+    ax.set_xlim(x_left, x_right * 2.0)
+
+    plt.subplots_adjust(left=0.05, right=0.72)
 
     plt.show()
 
+
     return tree
+
 
 if __name__ == "__main__":
 
-    xml_file = "blast_result_8676102.xml"
-    query_fasta = "gene_angela.fasta"
-    email = "teu_email@email.com"
+    xml_file = "...blastp.xml"
+    query_fasta = "...gene.fasta"
+    email = "...@email.com"
 
-    mafft_path = r"C:\Users\luisp\Downloads\mafft-7.526-win64-signed\mafft-win\mafft.bat"
-    # O caminho para o executável do MAFFT deve ser adaptado ao sistema e à instalação local do utilizador que executar o código.
+    mafft_path = r"C:\Users\..."
+    # O caminho para o executável do MAFFT deve ser adaptado ao sistema operativo e à instalação local do utilizador que executar o código.
 
-    fasta_hits, id_to_organism = msa_from_blastn_xml(
+    fasta_hits, id_to_organism = msa_from_blastp_xml(
         xml_file=xml_file,
         query_fasta=query_fasta,
         email=email,
@@ -179,6 +176,4 @@ if __name__ == "__main__":
 
     aligned = run_mafft(fasta_hits, mafft_path)
 
-    tree = phylo_tree_nucl(aligned, id_to_organism)
-
-
+    tree = phylo_tree_prot(aligned, id_to_organism)
