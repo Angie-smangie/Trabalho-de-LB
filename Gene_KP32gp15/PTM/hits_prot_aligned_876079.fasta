@@ -1,0 +1,110 @@
+>query NC_013647.1:10420-10875 Klebsiella phage KP32, complete genome
+-----------------ATGGCCAAGGTTCAATTCACTAAGCGACAGGAGACCTCTCAGA
+TTTTCGTTCACTGTTCGGCCACCAAGGCAACCATGGACGTAGGTGTCCGTGAGATTCGCC
+AGTGGCACAAAGAGCAGGGCTGGTTAGACGTTGGGTACCACTTCATCATCCGTCGTGACG
+GTACCGTTGAGGCGGGCCGAGACCAAGATGCTGTAGGTTCACACGTCAAAGGCTACAACT
+CGACTTCGGTCGGCGTG-------TGTCTGGTGGGAGGTATCG----ACGCCAAGGGCAA
+CCCTGAGGCAAACTTCACTCCAGCCCAGATGCAGGCGCTGCGTTCACTTCTGGTAGAACT
+GAAGGTGCAATACACTGGGGCCGTGCTGATGGCACACCATGATGTAGCACCTAAGGCCTG
+CCCGAGCTTCGACCTGAAGCGCTGGTGGGAGAAGAACGAACTGGTCACTTCTGACCATGG
+GTAA
+>prot1 amidase [Klebsiella phage KP32]
+----------------MAKVQFTKRQETSQIFVHCSATKA--------------------
+-TMDVGVR----------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+--EIRQWHKEQGWLDVGYHFIIRRDGTVEAGRDQDAVGSHVKGYNSTSVGVCLVGG----
+--IDAKGNPEANFTPAQMQALRSLLVELKVQYTG-----------AVLMAHHDVAPKACP
+SFDLKRWWEKNELVTSDHG-----------------------------------------
+------------------------------------------------------------
+----
+>prot2 endolysin [Klebsiella phage vB_KpnP_cmc356ctg1]
+----------------MAKVQFTKRQETSQIFVHCSATKA--------------------
+-TMDVGVR----------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+--EIRQWHKEQGWLDVGYHFIIRRDGTVEAGRDQDAVGSHVKGYNSTSVGVCLVGG----
+--IDAKGNPEANFTPAQMQALRSLLVELKVQYTG-----------AVLMAHHDVAPKACP
+SFDLKRWWEKNELVTSDRG-----------------------------------------
+------------------------------------------------------------
+----
+>prot3 amidase [Klebsiella phage KP32_isolate 192]
+MMYRSASSNRRKEQSSMAKVQFTKRQETSQIFVHCSATKA--------------------
+-TMDVGVR----------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+--EIRQWHKEQGWLDVGYHFIIRRDGTVEAGRDQDAVGSHVKGYNSTSVGVCLVGG----
+--IDAKGNPEANFTPAQMQSLRSLLVELKVQYSG-----------AVLMAHHDVAPKACP
+SFDLKRWWEKNELVTSDRG-----------------------------------------
+------------------------------------------------------------
+----
+>prot4 lysozyme/N-acetylmuramoyl-L-alanine amidase [Klebsiella phage KMI1]
+MMYRSASSSRRKEQSSMAKVQFTKRQETSQIFVHCSATKA--------------------
+-TMDIGVR----------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+--EIRQWHKEQGWLDVGYHFIIRRDGTVEAGRDQDAVGSHVKGYNSTSVGVCLVGG----
+--IDAKGNPEANFTPAQMQSLRSLLVELKVQYSG-----------AVLMAHHDVAPKACP
+SFDLKRWWEKNELVTSDRG-----------------------------------------
+------------------------------------------------------------
+----
+>prot5 endolysin [Klebsiella phage NL_ZS_1]
+----------------MAKVQFTKRQETSQIFVHCSATKA--------------------
+-TMDVGVR----------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+--EIRQWHKEQGWLDVGYHFIIRRDGTVEAGRDQDAVGSHVKGYNSTSVGVCLVGG----
+--IDAKGNPEANFTPAQMQSLRSLLVELKVQYTG-----------AVLMAHHDVAPKACP
+SFDLKRWWEKNELVTSDRG-----------------------------------------
+------------------------------------------------------------
+----
+>prot6 N-acetylmuramoyl-L-alanine amidase [Klebsiella phage KMI2]
+MMYRSASSNRRKEQSSMAKVQFTKRQETSQIFVHCSATKA--------------------
+-TMDVGVR----------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+--EIRQWHKEQGWLDVGYHFIIRRDGTVEAGRDQDAVGSHVKGYNSTSVGVCLVGG----
+--IDAKGNPEANFTPAQMQSLRSLLVELKVQYAG-----------AVLMAHHDVAPKACP
+SFDLKRWWEKNELVTSDRG-----------------------------------------
+------------------------------------------------------------
+----
+>prot7 peptidoglycan recognition protein family protein, partial [Escherichia coli]
+-----------RSKVSMAKVQFTKRQETSQIFVHCSATKA--------------------
+-TMDVGVR----------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+--EIRQWHKEQGWLDVGYHFIIRRDGTVEAGRDQDAVGSHVKGYNSTSVGVCLVGG----
+--IDAKGNPEANFTPAQMQSLRSLLVELKVQYSG-----------AVLMAHHDVAPKACP
+SFDLKRWWEKNELVTSDRG-----------------------------------------
+------------------------------------------------------------
+----
+>prot8 hypothetical protein FPAPBKPN_00018 [Klebsiella phage vB_KpnP_2146-HW]
+----------------MAKVQFTKRQETSQIFVHCSATKA--------------------
+-TMDVGVR----------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+--EIRQWHKEQGWLDVGYHFIIRRDGTVEAGRDQDAVGSHVKGYNSTSVGVCLVGG----
+--IDAKGNPEANFTPAQMQSLRSLLVELKVQYAG-----------AVLMAHHDVAPKACP
+SFNLKRWWEKNELVTSDHG-----------------------------------------
+------------------------------------------------------------
+----
+>prot9 amidase [Klebsiella phage KP32_isolate 195]
+----------------MAKVQFTKRQETSQIFVHCSATKA--------------------
+-TMDVGVR----------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+--EIRQWHKEQGWLDVGYHFIIRRDGTVEAGRDQDAVGSHVKGYNSTSVGVCLVGG----
+--IDAKGNPEANFTPAQMQALRSLLVELKVQYAG-----------AVLMAHHDVAPKACP
+SFDLKRWWEKNELVTSDRG-----------------------------------------
+------------------------------------------------------------
+----
+>prot10 hypothetical protein [Klebsiella phage 175005]
+----------------MAKVQFTKRQETSQIFVHCSATKA--------------------
+-TMDVGVR----------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+--EIRQWHKEQGWLDVGYHFIIRRDGTVEAGRDQDAVGSHVKGYNSTSVGVCLVGG----
+--IDAKGNPEANFTPSQMQSLRSLLVELKVQYTG-----------AVLMAHHDVAPKACP
+SFDLKRWWEKNELVTSDRG-----------------------------------------
+------------------------------------------------------------
+----
